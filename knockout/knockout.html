@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Knockout</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css ">
+    <style>
+    body {
+        font-family: Verdana;
+    }
+    td,
+    th {
+        padding-right: 10px;
+    }
+    </style>
+    </head>
+
+    <body>
+        <h1>
+            <span data-bind="text: people().length"></span>
+            People for
+            <span data-bind="text: region"></span>
+        </h1>
+        <form>
+            <input id='name' type='text' name='name' placeholder='name' />
+            <input id='address' type='text' name='address' placeholder='address' />
+            <input id='phone' type='phone' name='phone' placeholder='phone' />
+            <button id='addPerson' data-bind="click: addPerson">Add</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Telephone</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: { data: people, afterAdd: yellowFadeIn }">
+                <tr>
+                    <td data-bind="text: $index"></td>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: address"></td>
+                    <td data-bind="text: phone"></td>
+                    <td>
+                        <button class='removePerson' data-bind="click: $parent.removePerson">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+        </script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js">
+        </script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
+        </script>
+
+        <script id='validateLibraries'>
+        if (typeof jQuery != 'undefined') {
+            console.log('jQuery is active');
+        }
+        if (typeof jQuery.ui != 'undefined') {
+            console.log('jQuery-UI is active');
+        }
+        if (typeof ko != 'undefined') {
+            console.log('Knockout is active');
+        }
+        </script>
+        <script id='BestToMoveToExternalFile'>
+        // Knockout code
+        function ViewModel() {
+            var self = this; // persists this scope in functions
+            this.people = ko.observableArray([{
+                name: "John",
+                address: "Freeway Park Kansas City, MO 64127",
+                phone: "816-303-0303"
+            }, {
+                name: "Jane",
+                address: "Klamm Park Kansas City, KS 66104",
+                phone: "913-202-0202"
+            }, {
+                name: "Fred",
+                address: "Rosedale Park Kansas City, KS 66103",
+                phone: "816-101-0101"
+            }]);
+            this.city = ko.observable('Kansas City');
+            this.state = ko.observable('KS/MO');
+            this.region = ko.computed(function() {
+                return self.city() + ', ' + self.state();
+            });
+
+            this.addPerson = function() {
+                self.people.push({
+                    name: $('#name').val() || 'unknown',
+                    address: $('#address').val() || 'Kansas City, MO',
+                    phone: $('#phone').val() || 'unknown'
+                });
+                $('button').button({
+                    text: false
+                });
+                $(".removePerson").button("option", "icons", {
+                    primary: "ui-icon-closethick"
+                });
+                $('form input').val('');
+                $('#name').focus();
+            };
+            this.removePerson = function() {
+                self.people.remove(this);
+            };
+            this.yellowFadeIn = function(element, index, data) {
+                $(element).filter("tr")
+                    .animate({
+                        backgroundColor: 'yellow'
+                    }, 200)
+                    .animate({
+                        backgroundColor: 'white'
+                    }, 800);
+            };
+
+        }
+        ko.applyBindings(new ViewModel());
+
+         // jQuery code
+        $('button').button({
+            text: false
+        });
+        $("#addPerson").button("option", "icons", {
+            primary: "ui-icon-plusthick"
+        });
+        $(".removePerson").button("option", "icons", {
+            primary: "ui-icon-closethick"
+        });
+        $('#name').focus();
+        </script>
+
+    </body>
+
+</html>
