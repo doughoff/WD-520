@@ -150,3 +150,8 @@ purgePeople();
 setTimeout(function() {
     showAllPeople();
 }, 1000);
+
+//------------------------------------ clean up
+setTimeout(function() {
+    mongoose.connection.close();
+}, 5000);
