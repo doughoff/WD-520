@@ -1,0 +1,53 @@
+body {
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+/* color palette */
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a:link {
+  color: #00aaff;
+}
+a:visited {
+  color: #006699;
+}
+body {
+  color: #ffffff;
+  background: #66ccff;
+  border: 15px solid #00aaff;
+  padding: 25px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #5e1782;
+}
+input[type='text'] {
+  background-color: #77ddff;
+  -webkit-box-shadow: 10px 5px 20px rgba(102, 102, 102, 0.75);
+  -moz-box-shadow: 10px 5px 20px rgba(102, 102, 102, 0.75);
+  box-shadow: 10px 5px 20px rgba(102, 102, 102, 0.75);
+}
+textarea {
+  background-color: #66ccff;
+  -webkit-box-shadow: 10px 5px 20px rgba(51, 51, 51, 0.75);
+  -moz-box-shadow: 10px 5px 20px rgba(51, 51, 51, 0.75);
+  box-shadow: 10px 5px 20px rgba(51, 51, 51, 0.75);
+}
+body {
+  background-color: #66ccff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#66ccff), to(#99ffff));
+  background: -webkit-linear-gradient(top, #66ccff, #99ffff);
+  background: -moz-linear-gradient(top, #66ccff, #99ffff);
+  background: -ms-linear-gradient(top, #66ccff, #99ffff);
+  background: -o-linear-gradient(top, #66ccff, #99ffff);
+}
+/*# sourceMappingURL=style.css.map */

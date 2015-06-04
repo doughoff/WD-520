@@ -107,16 +107,19 @@ function updateAllDou() {
     console.log('Starting updateAllDou...');
     // using RegEx to do fuzzy search with case insensitivity
     // find specific with 'Dou'
+    // use currentDate operator
 
     Person.update({
             givenName: /dou/i
         }, {
-            updated: new Date()
+            $currentDate: {
+                updated: true
+            }
         }, {
             multi: true
         },
         function(err, numberUpdated) {
-            console.log('Updated %d documents.', numberUpdated);
+            console.log('Updated %d documents.', numberUpdated.nModified);
         });
 }
 
@@ -145,8 +148,8 @@ function purgePeople() {
 startMongoose();
 createPersonModel();
 // addTestData();
-purgePeople();
-// updateAllDou();
+// purgePeople();
+updateAllDou();
 setTimeout(function() {
     showAllPeople();
 }, 1000);

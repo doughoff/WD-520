@@ -1,13 +1,12 @@
 {
-  "name": "express-simple",
-  "version": "0.0.1",
-  "description": "My 1st Express test app",
-  "scripts": {
-    "start": "node express-simple.js"
-  },
-  "author": "Doug Hoff",
-  "license": "ISC",
-  "dependencies": {
-  	"express": "4.x"
-  }
+ "name": "express-simple",
+ "description" : "My 1st Express test app",
+ "version": "0.0.1",
+ "private": true,
+ "scripts": {
+ "start": "node express-simple.js"
+ },
+ "dependencies": {
+ "express": "4.x"
+ }
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang= “en” ng-app='directiveApp' ng-controller="defaultController">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <script src="js/angular.min.js"></script>
+    <script>
+    angular.module("directiveApp", [])
+        .controller('defaultController', ['$scope',
+            function($scope) {
+                $scope.title = 'AngularJS custom directive example';
+            }
+        ])
+        .directive('exLorem', function() {
+            return {
+                restrict: 'AEC', // attribute (default), element (default) or class
+                templateUrl: 'templates/lorem.html'
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <h1>{{title}}</h1>
+    <div ex-lorem>Existing text in the div.</div>
+    <ex-lorem></ex-lorem>
+    <div class='ex-lorem'></div>
+</body>
+
+</html>

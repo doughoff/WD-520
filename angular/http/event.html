@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app='exerciseApp' ng-controller="defaultController">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <script src="js/angular.min.js"></script>
+    <script>
+    angular.module("exerciseApp", [])
+        .controller("defaultController", ['$scope',
+            function($scope) {
+                $scope.title = 'AngularJS event example';
+                $scope.friends = [{
+                    name: 'Rachel',
+                    actor: 'Jennifer Aniston'
+                }, {
+                    name: 'Monica',
+                    actor: 'Courtney Cox'
+                }, {
+                    name: 'Phoebe',
+                    actor: 'Lisa Kudrow'
+                }, {
+                    name: 'Joey',
+                    actor: 'Matt LeBlanc'
+                }, {
+                    name: 'Chandler',
+                    actor: 'Matthew Perry'
+                }, {
+                    name: 'Ross',
+                    actor: 'David Schwimmer'
+                }];
+                $scope.remove = function(friend) {
+                    var indexOfFriend = $scope.friends.indexOf(friend);
+                    console.log('Removing', friend, 'at index', indexOfFriend);
+                    $scope.friends.splice(indexOfFriend, 1);
+                };
+                $scope.add = function(e) {
+                    var newFriend = {
+                        name: $scope.addName || 'unknown name',
+                        actor: $scope.addActor || 'unknown actor'
+                    };
+                    console.log('Adding new friend', newFriend, 'with event', e);
+                    $scope.friends.push(newFriend);
+                };
+
+            } // end function($scope)
+        ]);
+    </script>
+</head>
+
+<body>
+    <h1>{{title}}</h1>
+    <h2>Add a friend</h2>
+    <form>
+        <label>Name:</label>
+        <input type="text" ng-model="addName" placeholder="Enter a name" autofocus>
+        <label>Actor:</label>
+        <input type="text" ng-model="addActor" placeholder="Enter an actor">
+        <button ng-click="add($event)">Add</button>
+    </form>
+    <ul>
+        <li ng-repeat='friend in friends'>
+            {{friend.name}} is played by {{friend.actor}}
+            <button ng-click="remove(friend)">Remove</button>
+        </li>
+    </ul>
+</body>
+
+</html>

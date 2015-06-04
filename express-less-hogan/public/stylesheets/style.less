@@ -1,0 +1,64 @@
+body {
+  padding: 10px; 
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+/* color palette */
+@primary-color: hsl(200, 100%, 70%);
+@primary-dark-color: darken(@primary-color, 20%);
+@primary-darker-color: darken(@primary-color, 40%);
+@body-color: lighten(@primary-color, 40%);
+@accent-red-color: hsl(280, 70%, 30%);
+
+body {
+ padding: 0px;
+ font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a:link {
+ color: @primary-dark-color;
+}
+a:visited {
+ color: @primary-darker-color;
+}
+
+body {
+ color: @body-color;
+ background:@primary-color;
+ border:15px solid @primary-dark-color;
+ padding:25px;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: @accent-red-color;
+}
+
+input[type='text'] { 
+ background-color: @primary-color + #111;
+ .box-shadow-prefixed(10px 5px 20px , hsla(0, 0%, 40%, 0.75) );
+}
+textarea {
+	background-color: @primary-color;
+ 	.box-shadow-prefixed(10px 5px 20px , hsla(0, 0%, 20%, 0.75) );
+}
+
+.box-shadow-prefixed (@style, @color){
+	-webkit-box-shadow:	@style @color;
+	-moz-box-shadow:	@style @color;
+	 box-shadow:		@style @color;
+}
+
+.gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+body {
+	.gradient(@primary-color, @primary-color + #333);
+}

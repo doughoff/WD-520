@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app='exerciseApp' ng-controller="defaultController">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <script src="js/angular.min.js"></script>
+    <script>
+    angular.module("exerciseApp", [])
+        .controller("defaultController", ['$scope',
+            function($scope) {
+                $scope.title = 'AngularJS click example';
+                $scope.friends = [{
+                    name: 'Rachel',
+                    actor: 'Jennifer Aniston'
+                }, {
+                    name: 'Monica',
+                    actor: 'Courtney Cox'
+                }, {
+                    name: 'Phoebe',
+                    actor: 'Lisa Kudrow'
+                }, {
+                    name: 'Joey',
+                    actor: 'Matt LeBlanc'
+                }, {
+                    name: 'Chandler',
+                    actor: 'Matthew Perry'
+                }, {
+                    name: 'Ross',
+                    actor: 'David Schwimmer'
+                }];
+                $scope.remove = function(friend) {
+                    var indexOfFriend = $scope.friends.indexOf(friend);
+                    console.log('Removing', friend, 'at index', indexOfFriend);
+                    $scope.friends.splice(indexOfFriend, 1);
+                };
+
+            } // end function($scope)
+        ]);
+    </script>
+</head>
+
+<body>
+    <h1>{{title}}</h1>
+    <ul>
+        <li ng-repeat='friend in friends'>
+            {{friend.name}} is played by {{friend.actor}}
+            <button ng-click="remove(friend)">Remove</button>
+        </li>
+    </ul>
+</body>
+
+</html>
