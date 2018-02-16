@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Stylesheets =====================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="../css/wd-515.css">
+    <style>
+        html {
+            height: 100%;
+            width: 50%;
+            /* width: 980px; */
+            /* Permalink - use to edit and share this gradient: 
+                http://colorzilla.com/gradient-editor/#f0f9ff+0,cbebff+47,a1dbff+100;Blue+3D+%2313 */
+            background: #f0f9ff;
+            /* Old browsers */
+            background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff', GradientType=0);
+            /* IE6-9 */
+        }
+    </style>
+
+    <!-- JavaScript =====================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Dimensions</title>
+</head>
+
+<body>
+    <h1>Dimensions</h1>
+    <section>
+        <h2>Visual viewport</h2>
+        Your window innerWidth is
+        <data id='innerWidth'>0</data> and window innerHeight is
+        <data id='innerHeight'>0</data>.
+        <script>
+            $(window).on('load resize', function () {
+                $('#innerWidth').text(window.innerWidth);
+                $('#innerHeight').text(window.innerHeight);
+            });
+        </script>
+    </section>
+    <section>
+        <h2>Layout viewport</h2>
+        Your document clientWidth is
+        <data id='clientWidth'>0</data> and your html clientHeight is
+        <data id='clientHeight'>0</data>.
+        <script>
+            $(window).on('load resize', function () {
+                $('#clientWidth').text(document.documentElement.clientWidth);
+                $('#clientHeight').text(document.documentElement.clientHeight);
+            });
+        </script>
+    </section>
+    <section>
+        <h2>HTML element</h2>
+        Your html offsetWidth is
+        <data id='offsetWidth'>0</data> and your html offsetHeight is
+        <data id='offsetHeight'>0</data>.
+        <script>
+            $(window).on('load resize', function () {
+                $('#offsetWidth').text(document.documentElement.offsetWidth);
+                $('#offsetHeight').text(document.documentElement.offsetHeight);
+            });
+        </script>
+    </section>
+    <section>
+        <h2>Event X/Y</h2>
+        Your cursor is at x:
+        <data id='x'>0</data> and y:
+        <data id='y'>0</data>.
+        <script>
+            $(window).on('load mousemove', function (e) {
+                $('#x').text(e.pageX);
+                $('#y').text(e.pageY);
+            });
+        </script>
+    </section>
+    <section>
+        <h2>Pixels off-screen</h2>
+        Your pageXOffset is :
+        <data id='pageXOffset'>0</data> and pageYOffset is :
+        <data id='pageYOffset'>0</data>.
+        <script>
+            $(window).on('load scroll', function () {
+                $('#pageXOffset').text(window.pageXOffset);
+                $('#pageYOffset').text(window.pageYOffset);
+            });
+        </script>
+    </section>
+    <section style='margin: 100px;'>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro reiciendis animi officia necessitatibus eveniet illo modi libero blanditiis saepe molestiae ab cumque cum quas iste tempore autem asperiores, itaque ex.
+    </section>
+
+</body>
+
+</html>

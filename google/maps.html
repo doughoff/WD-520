@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Stylesheets =====================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="../css/wd-515.css">
+
+    <title>Maps</title>
+</head>
+
+<body>
+    <h1>Maps</h1>
+    <h2>Static map</h2>
+    <img border="0" src="http://maps.googleapis.com/maps/api/staticmap?center=1601+Broadway+Blvd+Kansas+City&zoom=18&size=640x512&maptype=satellite"
+    title='Kauffman Center'>
+    <h2>iFramed map</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5216.90687740924!2d-94.61064291254614!3d38.96986463204994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x73aec4617abd2f03!2sCentriq+Training!5e0!3m2!1sen!2sus!4v1503581096030" width="640" height="512" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <h2>Find me on map</h2>
+    <img id='whereIam' border="0" title='where I am'>
+    
+    <script>
+        function findMeOnMap(geoposition){
+            coords =  geoposition.coords.latitude + ',' + geoposition.coords.longitude;
+            var img = document.querySelector('#whereIam');
+            img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + coords; 
+            img.src += '&zoom=18'; // 0-20
+            img.src += '&maptype=roadmap'; 
+                // roadmap, satellite, terrain, hybrid
+            img.src += '&size=640x512';
+            img.src += '&markers=color:red|label:M|'+ coords;
+        }
+        navigator.geolocation.getCurrentPosition(findMeOnMap,null);
+    </script>
+    
+</body>
+
+</html>

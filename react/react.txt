@@ -1,0 +1,2 @@
+https://preactjs.com/
+https://medium.com/@guyingjie129/why-you-shouldnt-use-preact-and-inferno-to-replace-react-4000ffb44572

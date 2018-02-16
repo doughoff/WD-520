@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Mobile Web Apps class exercise</title>
+        <meta name="description" content="Centriq Mobile Web Apps Development class exercise file">
+        <meta name="author" content="My Name">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="stylesheet" href="css/wd515.css">
+        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+        <h1>Static maps</h1>
+        <img border="0" src="http://maps.googleapis.com/maps/api/staticmap?center=1601+Broadway+Blvd+Kansas+City&zoom=18&size=640x512&maptype=satellite" title='Kauffman Center'>
+        <img id='whereIam' border="0" title='where I am'>
+
+        <script>
+            function findMeOnMap(geoposition){
+                coords =  geoposition.coords.latitude + ',' + geoposition.coords.longitude;
+                var img = document.querySelector('#whereIam');
+                img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + coords; 
+                img.src += '&zoom=18';
+                    // 0-20
+                img.src += '&maptype=roadmap'; 
+                    // roadmap, satellite, terrain, hybrid
+                img.src += '&size=640x512';
+                img.src += '&markers=color:red|label:M|'+ coords;
+            }
+            navigator.geolocation.getCurrentPosition(findMeOnMap,null);
+        </script>
+        
+
+
+        <script src="js/vendor/jquery-2.1.0.min.js"></script>
+        <script src="js/helper.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+           console.info('jQuery is active.');
+           // page specific JavaScript follows...
+        </script>
+            
+    </body>
+</html>

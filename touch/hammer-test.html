@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #myElement {
+            background: silver;
+            height: 300px;
+            text-align: center;
+            font: 30px/35px Helvetica, Arial, sans-serif;
+            padding: 1rem 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Supported gestures are: pinch, rotate, press, panright, panleft, tap, and doubletap</p>
+    <p>Other gestures are: swipe - See
+        <a href="http://hammerjs.github.io/">Hammer</a>
+    </p>
+    <div id="myElement"></div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script>
+    var myElement = document.getElementById('myElement');
+
+    // create a simple instance
+    // by default, it only adds horizontal recognizers (panright, panleft)
+    var hammertime = new Hammer(myElement);
+
+    // listen to events...
+    hammertime.on("pan panleft panright tap press rotate pinch press tap doubletap swipe",
+        function (e) {
+            myElement.textContent = e.type + " gesture detected.";
+        });
+    hammertime.get('rotate').set({
+        enable: true
+    });
+    hammertime.get('pinch').set({
+        enable: true
+    });
+</script>
+
+</html>

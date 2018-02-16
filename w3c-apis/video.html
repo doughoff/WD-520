@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        $(document).ready(function() {
+
+            navigator.getMedia = (
+                navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia
+            );
+
+            if (navigator.getMedia) {
+                navigator.getMedia({
+                        audio: false,
+                        video: true
+                    },
+                    function(stream) {
+                        if (navigator.mozGetUserMedia) {
+                            video.mozSrcObject = stream;
+                        } else {
+                            var vendorURL = window.URL || window.webkitURL;
+                            video.src = vendorURL.createObjectURL(stream);
+                        }
+
+                        video.play();
+                    },
+                    function(err) {
+                        alert("OH GOD WHAT HAPPENED!?!??!!! " + err);
+                    }
+                );
+            } else {
+                alert("Sorry, your browser does not support WebRTC.");
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Get User Media</h1>
+    <video id="video"></video>
+</body>
+
+</html>

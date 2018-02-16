@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Stylesheets =====================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="../css/wd-515.css">
+
+    <!-- JavaScript =====================================================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Orientation</title>
+</head>
+
+<body>
+    <h1>Orientation</h1>
+    <p id="eventText"></p>
+    <script>
+    $('body').on("orientationchange", function (event) {
+            $("#eventText").text(event.type + " changed me to " + event.orientation);
+            console.log(event);
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Drag & Drop Demo</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script>
+        $(function() { // start ready     
+            // DOM manipulation code here        
+            console.info('jQuery is active.');
+            $('.paper').draggable({
+                revert: 'invalid',
+                cursor: 'move',
+                containment: 'parent',
+                opacity: 0.35
+            });
+
+            $('.trash').droppable({
+                hoverClass: 'drop-hover',
+                drop: function(event, ui) {
+                    $(ui.draggable).hide('slow');
+                    var dragInfo = $('<span />')
+                        .append('event: ' + event.type)
+                        .append(' on: #' + event.target.id)
+                        .append($('<br/>'))
+                        .append('item dropped was: #' + ui.draggable[0].id)
+                        .append($('<br/>'));
+                    $('output').append(dragInfo);
+                }
+            });
+
+        }); // end ready function
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
+    <style>
+        #container {
+            height: 200px;
+            margin-bottom: 7em;
+        }
+        
+        .paper {
+            cursor: move;
+            height: 100px;
+        }
+        
+        .trash {
+            height: 200px;
+            float: right;
+            margin-right: 50px;
+        }
+        
+        .drop-hover {
+            transform: rotate(7deg);
+            -ms-transform: rotate(7deg);
+            -webkit-transform: rotate(7deg);
+            transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            -webkit-transition: all 1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Drag & Drop Demo</h1>
+    <div id='container'>
+        <img id="trash2" class="trash" src="http://outdoortrashcan.files.wordpress.com/2011/11/trashcan.jpg" />
+        <img id="trash1" class="trash" src="http://outdoortrashcan.files.wordpress.com/2011/11/trashcan.jpg" />
+        <img id="paper1" class="paper" src="http://3.bp.blogspot.com/_hmzoq8R4W6A/SVtwgFsFhPI/AAAAAAAABPE/k0Hc1sWhZjU/s320/crumbledpaper.gif" />
+        <img id="paper2" class="paper" src="http://3.bp.blogspot.com/_hmzoq8R4W6A/SVtwgFsFhPI/AAAAAAAABPE/k0Hc1sWhZjU/s320/crumbledpaper.gif" />
+        <img id="paper3" class="paper" src="http://3.bp.blogspot.com/_hmzoq8R4W6A/SVtwgFsFhPI/AAAAAAAABPE/k0Hc1sWhZjU/s320/crumbledpaper.gif" />
+    </div>
+    <output></output>
+
+</body>
+
+</html>
